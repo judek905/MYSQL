@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MySQL Academy teaches MySQL step by step: installing the server, designing tables, writing queries, joining tables and summarising data, with a practice database you can install in minutes.">
+    <meta name="theme-color" content="#f4f5f0">
+    <title>MySQL Academy | Learn MySQL Step by Step</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============================== HEADER ============================== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="wordmark" href="#top">MySQL Academy</a>
+
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Main">
+                <a class="nav-link" href="#about">About</a>
+                <a class="nav-link" href="#lessons">Lessons</a>
+                <a class="nav-link" href="#cheatsheet">Cheat sheet</a>
+                <a class="nav-link" href="#practice">Practice</a>
+                <a class="nav-link" href="#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- ============================== HERO ============================== -->
+        <section class="hero" id="top">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <h1>Learn MySQL by querying real data.</h1>
+                    <p class="lead">A step-by-step course for people new to databases. Start with your first <code>SELECT</code>, then build up to joins and reports, using a practice database you can install in a few minutes.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#lessons">Start Lesson 01</a>
+                        <a class="text-link" href="academy.sql" download>Download the practice database</a>
+                    </div>
+                </div>
+
+                <figure class="printout">
+                    <pre class="printout-input"><span class="prompt">mysql&gt; </span>SELECT s.first_name, c.title, e.grade
+<span class="prompt">    -&gt; </span>FROM enrollments AS e
+<span class="prompt">    -&gt; </span>JOIN students AS s ON s.student_id = e.student_id
+<span class="prompt">    -&gt; </span>JOIN courses AS c ON c.course_id = e.course_id
+<span class="prompt">    -&gt; </span>WHERE e.status = 'completed'
+<span class="prompt">    -&gt; </span>ORDER BY e.grade DESC
+<span class="prompt">    -&gt; </span>LIMIT 3;</pre>
+                    <pre class="printout-output">+------------+----------------------------+-------+
+| first_name | title                      | grade |
++------------+----------------------------+-------+
+| Faith      | Web Development Essentials | 95.50 |
+| Sarah      | MySQL Fundamentals         | 91.00 |
+| Kevin      | Python for Data Analysis   | 88.00 |
++------------+----------------------------+-------+
+3 rows in set (0.00 sec)</pre>
+                    <figcaption>Output from the MySQL command-line client, using the practice database.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ============================== ABOUT ============================== -->
+        <section class="section" id="about">
+            <div class="container split">
+                <h2>SQL is the language. MySQL is the engine that speaks it.</h2>
+
+                <div>
+                    <p>MySQL is one of the most widely used open-source relational database systems. It stores data in tables of rows and columns, and you ask it questions and make changes using SQL, the standard language for relational data.</p>
+                    <p>Learn the fundamentals here and the skills carry over to PostgreSQL, SQL Server, Oracle and SQLite. The syntax differs in places, but the ideas stay the same.</p>
+
+                    <dl class="facts">
+                        <div>
+                            <dt>Open source</dt>
+                            <dd>MySQL Community Edition is free to download and use.</dd>
+                        </div>
+                        <div>
+                            <dt>Reliable storage</dt>
+                            <dd>The InnoDB engine provides transactions, row-level locking and crash recovery.</dd>
+                        </div>
+                        <div>
+                            <dt>Proven at scale</dt>
+                            <dd>It runs everything from personal projects to large production systems.</dd>
+                        </div>
+                        <div>
+                            <dt>Works with your language</dt>
+                            <dd>Connectors exist for Python, Java, PHP, Node.js, C# and many more.</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== LESSONS ============================== -->
+        <section class="section section-alt" id="lessons">
+            <div class="container">
+                <header class="section-head">
+                    <h2>Six lessons, in order</h2>
+                    <p>Each lesson builds on the one before it. Read the explanation, run the examples on the practice database, then move on.</p>
+                </header>
+
+                <ol class="lesson-list">
+                    <li class="lesson">
+                        <span class="lesson-num" aria-hidden="true">01</span>
+                        <div>
+                            <h3>Getting started</h3>
+                            <p>Install MySQL Server, connect with the command-line client or MySQL Workbench, and learn how databases, tables, rows and columns fit together.</p>
+                        </div>
+                        <p class="lesson-meta"><span class="level">Beginner</span>Installing, connecting, core concepts</p>
+                    </li>
+
+                    <li class="lesson">
+                        <span class="lesson-num" aria-hidden="true">02</span>
+                        <div>
+                            <h3>Databases and tables</h3>
+                            <p>Create a database and its tables, choose sensible data types, and use primary keys so that every row can be identified.</p>
+                        </div>
+                        <p class="lesson-meta"><span class="level">Beginner</span>CREATE, data types, primary keys</p>
+                    </li>
+
+                    <li class="lesson">
+                        <span class="lesson-num" aria-hidden="true">03</span>
+                        <div>
+                            <h3>Managing data</h3>
+                            <p>Add, change and remove rows with INSERT, UPDATE and DELETE, and learn why the WHERE clause matters more than anything else in those statements.</p>
+                        </div>
+                        <p class="lesson-meta"><span class="level">Beginner</span>INSERT, UPDATE, DELETE</p>
+                    </li>
+
+                    <li class="lesson">
+                        <span class="lesson-num" aria-hidden="true">04</span>
+                        <div>
+                            <h3>Querying with SELECT</h3>
+                            <p>Return exactly the rows and columns you need using filters, sorting, limits and the operators IN, BETWEEN and LIKE.</p>
+                        </div>
+                        <p class="lesson-meta"><span class="level">Beginner</span>WHERE, ORDER BY, LIMIT</p>
+                    </li>
+
+                    <li class="lesson">
+                        <span class="lesson-num" aria-hidden="true">05</span>
+                        <div>
+                            <h3>Relationships and joins</h3>
+                            <p>Link tables with foreign keys, then combine them with INNER JOIN and LEFT JOIN to answer questions that span several tables.</p>
+                        </div>
+                        <p class="lesson-meta"><span class="level">Intermediate</span>Foreign keys, INNER JOIN, LEFT JOIN</p>
+                    </li>
+
+                    <li class="lesson">
+                        <span class="lesson-num" aria-hidden="true">06</span>
+                        <div>
+                            <h3>Grouping and aggregates</h3>
+                            <p>Summarise data with COUNT, SUM, AVG, MIN and MAX, group results with GROUP BY, and filter the groups with HAVING.</p>
+                        </div>
+                        <p class="lesson-meta"><span class="level">Intermediate</span>GROUP BY, HAVING, aggregate functions</p>
+                    </li>
+                </ol>
+
+                <p class="lessons-next">After these six, the natural next steps are indexes and EXPLAIN, transactions, users and privileges, and backups.</p>
+            </div>
+        </section>
+
+        <!-- ============================== CHEAT SHEET ============================== -->
+        <section class="section" id="cheatsheet">
+            <div class="narrow">
+                <header class="section-head">
+                    <h2>Eight statements to know</h2>
+                    <p>Every example runs against the practice database. Copy one, paste it into the MySQL client, and change the values to see what happens.</p>
+                </header>
+
+                <div class="snippets">
+
+                    <article class="snippet">
+                        <h3>Read rows</h3>
+                        <p><code>SELECT *</code> returns every column. It is handy while exploring. In real work, name the columns you need.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">SELECT *
+FROM students;</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="snippet">
+                        <h3>Filter rows</h3>
+                        <p><code>WHERE</code> keeps only the rows that match a condition. Text values go in single quotes.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">SELECT first_name, last_name, city
+FROM students
+WHERE city = 'Kampala';</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="snippet">
+                        <h3>Sort and limit</h3>
+                        <p><code>ORDER BY</code> sorts the result, and <code>DESC</code> reverses the order. <code>LIMIT</code> returns only the first rows.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">SELECT title, price
+FROM courses
+ORDER BY price DESC
+LIMIT 3;</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="snippet">
+                        <h3>Add a row</h3>
+                        <p><code>INSERT</code> names the columns first, then supplies the values in the same order.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">INSERT INTO students
+    (first_name, last_name, email, city, birth_date, joined_on)
+VALUES
+    ('Ruth', 'Auma', 'ruth.auma@student.example', 'Kampala', '2003-02-14', CURDATE());</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="snippet">
+                        <h3>Change rows</h3>
+                        <p><code>UPDATE</code> changes existing rows. Always include a <code>WHERE</code> clause, or every row in the table changes.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">UPDATE enrollments
+SET grade = 81.00, status = 'completed'
+WHERE enrollment_id = 2;</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="snippet">
+                        <h3>Remove rows</h3>
+                        <p><code>DELETE</code> removes the matching rows. Run the same <code>SELECT</code> first to check exactly what will go.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">-- Preview the rows that will be removed
+SELECT *
+FROM enrollments
+WHERE status = 'dropped';
+
+-- Then delete them
+DELETE FROM enrollments
+WHERE status = 'dropped';</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="snippet">
+                        <h3>Combine tables</h3>
+                        <p><code>JOIN</code> matches rows across tables using a shared key. Short aliases such as <code>s</code> and <code>c</code> keep the query readable.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">SELECT s.first_name, s.last_name, c.title, e.status
+FROM enrollments AS e
+JOIN students AS s ON s.student_id = e.student_id
+JOIN courses  AS c ON c.course_id  = e.course_id
+WHERE e.status = 'active';</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="snippet">
+                        <h3>Summarise groups</h3>
+                        <p><code>GROUP BY</code> produces one row per group. <code>WHERE</code> filters rows before grouping, and <code>HAVING</code> filters the groups afterwards.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">SELECT c.category,
+       COUNT(*)               AS total,
+       ROUND(AVG(e.grade), 2) AS avg_grade
+FROM enrollments AS e
+JOIN courses AS c ON c.course_id = e.course_id
+GROUP BY c.category
+HAVING COUNT(*) &gt;= 2
+ORDER BY total DESC;</code></pre>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== PRACTICE ============================== -->
+        <section class="section section-alt" id="practice">
+            <div class="container">
+                <header class="section-head">
+                    <h2>Practise on a real database</h2>
+                    <p>The practice database has four related tables, ten students, seven courses and eighteen enrollments. Setting it up takes about a minute.</p>
+                </header>
+
+                <ol class="steps">
+                    <li>
+                        <h3>Download the script</h3>
+                        <p>Save <code>academy.sql</code> in a folder you can reach from your terminal.</p>
+                        <a class="btn btn-primary" href="academy.sql" download>Download academy.sql</a>
+                    </li>
+
+                    <li>
+                        <h3>Run the script</h3>
+                        <p>Load it with the MySQL client and enter your root password when prompted. The script drops and recreates <code>academy_db</code>, so never run it against data you need to keep.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">Terminal</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code>mysql -u root -p &lt; academy.sql</code></pre>
+                        </div>
+                    </li>
+
+                    <li>
+                        <h3>Check the data</h3>
+                        <p>Open the database with <code>mysql -u root -p academy_db</code>, then run this query. You should see 4, 10, 7 and 18 rows.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">SQL</span>
+                                <button class="copy-btn" type="button">Copy</button>
+                            </div>
+                            <pre><code class="language-sql">SELECT 'instructors' AS table_name, COUNT(*) AS row_count FROM instructors
+UNION ALL
+SELECT 'students',    COUNT(*) FROM students
+UNION ALL
+SELECT 'courses',     COUNT(*) FROM courses
+UNION ALL
+SELECT 'enrollments', COUNT(*) FROM enrollments;</code></pre>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="practice-bottom">
+                    <div>
+                        <h3>Database layout</h3>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Table</th>
+                                        <th scope="col">Stores</th>
+                                        <th scope="col">Key columns</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>instructors</code></td>
+                                        <td>Teachers who create courses</td>
+                                        <td><code>instructor_id</code> (primary key)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>students</code></td>
+                                        <td>People enrolled in courses</td>
+                                        <td><code>student_id</code> (primary key), <code>city</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>courses</code></td>
+                                        <td>Course catalogue with prices</td>
+                                        <td><code>course_id</code> (primary key), <code>instructor_id</code> (foreign key)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>enrollments</code></td>
+                                        <td>Links students to courses, with status and grade</td>
+                                        <td><code>student_id</code> and <code>course_id</code> (foreign keys)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Challenges</h3>
+                        <ol class="challenges">
+                            <li>List every course priced under 80.00, cheapest first.</li>
+                            <li>Find all students who live in Kampala, sorted by birth date.</li>
+                            <li>Show the student name and course title for every active enrollment.</li>
+                            <li>Count how many courses each instructor teaches.<span>Hint: join the two tables, then use GROUP BY.</span></li>
+                            <li>Find courses that have no enrollments.<span>Hint: a LEFT JOIN keeps unmatched rows, which show as NULL.</span></li>
+                            <li>Give Peter Mugisha a 5% raise, then check his new salary.<span>Hint: UPDATE with a precise WHERE clause.</span></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== FAQ ============================== -->
+        <section class="section" id="faq">
+            <div class="narrow">
+                <header class="section-head">
+                    <h2>Common questions</h2>
+                </header>
+
+                <div class="faq">
+                    <details>
+                        <summary>Do I need programming experience?</summary>
+                        <p>No. The lessons start from first principles. Some later examples are easier if you have written code before, but nothing here requires it.</p>
+                    </details>
+
+                    <details>
+                        <summary>Is MySQL free?</summary>
+                        <p>Yes. MySQL Community Edition is free and open source. Oracle, which owns MySQL, also sells commercial editions with extra support and features.</p>
+                    </details>
+
+                    <details>
+                        <summary>What is the difference between SQL and MySQL?</summary>
+                        <p>SQL is the language used to work with relational databases. MySQL is a database system that understands SQL. PostgreSQL, SQL Server and other systems also use SQL.</p>
+                    </details>
+
+                    <details>
+                        <summary>Which version should I install?</summary>
+                        <p>MySQL 8.4 LTS is recommended. The practice script needs MySQL 8.0.16 or later.</p>
+                    </details>
+
+                    <details>
+                        <summary>Does this work on Windows, macOS and Linux?</summary>
+                        <p>Yes. MySQL has official installers for Windows and macOS, and most Linux distributions package it through their repositories or through MySQL's own package repository.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== CLOSING ============================== -->
+        <section class="closing">
+            <div class="container closing-inner">
+                <h2>Write your first query today.</h2>
+                <a class="btn btn-primary" href="#lessons">Start Lesson 01</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================== FOOTER ============================== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <p class="footer-brand">MySQL Academy</p>
+                <p class="footer-note">Free learning material for anyone who wants to understand relational databases and SQL.</p>
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#lessons">Lessons</a></li>
+                <li><a href="#cheatsheet">Cheat sheet</a></li>
+                <li><a href="#practice">Practice</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+
+            <p class="footer-legal">
+                &copy; <span id="year">2026</span> MySQL Academy. MySQL is a trademark of Oracle and/or its affiliates.
+                MySQL Academy is an independent learning resource and is not affiliated with Oracle.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        /* ---------- Footer year ---------- */
+        var year = document.getElementById('year');
+        if (year) {
+            year.textContent = new Date().getFullYear();
+        }
+
+        /* ---------- Header shadow on scroll ---------- */
+        var header = document.querySelector('.site-header');
+
+        function updateHeader() {
+            header.classList.toggle('is-scrolled', window.scrollY > 4);
+        }
+        window.addEventListener('scroll', updateHeader, { passive: true });
+        updateHeader();
+
+        /* ---------- Mobile navigation ---------- */
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.getElementById('site-nav');
+
+        if (toggle && nav) {
+            toggle.addEventListener('click', function () {
+                var open = nav.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', String(open));
+                toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+            });
+
+            nav.addEventListener('click', function (event) {
+                if (event.target.closest('a')) {
+                    nav.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-label', 'Open navigation');
+                }
+            });
+        }
+
+        /* ---------- Highlight the section in view ---------- */
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+        var linkById = {};
+        navLinks.forEach(function (link) {
+            linkById[link.getAttribute('href').slice(1)] = link;
+        });
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    var link = linkById[entry.target.id];
+                    if (link && entry.isIntersecting) {
+                        navLinks.forEach(function (item) {
+                            item.classList.remove('is-active');
+                        });
+                        link.classList.add('is-active');
+                    }
+                });
+            }, { rootMargin: '-40% 0px -55% 0px' });
+
+            Object.keys(linkById).forEach(function (id) {
+                var section = document.getElementById(id);
+                if (section) {
+                    observer.observe(section);
+                }
+            });
+        }
+
+        /* ---------- SQL syntax highlighting (no libraries) ---------- */
+        var KEYWORDS = new Set((
+            'ADD ALTER AND AS ASC AVG BETWEEN BY CHECK COLLATE COUNT CREATE CURDATE ' +
+            'DATABASE DATE DECIMAL DEFAULT DELETE DESC DISTINCT DROP ENUM EXISTS FALSE ' +
+            'FOREIGN FROM GROUP HAVING IN INDEX INNER INSERT INTO IS JOIN KEY LEFT LIKE ' +
+            'LIMIT MAX MIN NOT NULL ON OR ORDER PRIMARY REFERENCES RIGHT ROUND SELECT SET ' +
+            'SUM TABLE TRUE UNION UNIQUE UPDATE USE VALUES VARCHAR WHERE CONSTRAINT ' +
+            'BOOLEAN INT ENGINE ALL'
+        ).split(' '));
+
+        var TOKEN_PATTERN = "(--[^\\n]*)|('(?:[^'\\\\]|\\\\.)*')|(\\b\\d+(?:\\.\\d+)?\\b)|([A-Za-z_][A-Za-z0-9_]*)";
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        function highlightSQL(source) {
+            var pattern = new RegExp(TOKEN_PATTERN, 'g');
+            var output = '';
+            var last = 0;
+            var match;
+
+            while ((match = pattern.exec(source)) !== null) {
+                output += escapeHtml(source.slice(last, match.index));
+
+                var text = match[0];
+                var cssClass = '';
+
+                if (match[1]) {
+                    cssClass = 'tok-com';
+                } else if (match[2]) {
+                    cssClass = 'tok-str';
+                } else if (match[3]) {
+                    cssClass = 'tok-num';
+                } else if (KEYWORDS.has(text.toUpperCase())) {
+                    cssClass = 'tok-kw';
+                }
+
+                output += cssClass
+                    ? '<span class="' + cssClass + '">' + escapeHtml(text) + '</span>'
+                    : escapeHtml(text);
+
+                last = pattern.lastIndex;
+            }
+
+            return output + escapeHtml(source.slice(last));
+        }
+
+        document.querySelectorAll('code.language-sql').forEach(function (element) {
+            element.innerHTML = highlightSQL(element.textContent);
+        });
+
+        /* ---------- Copy buttons ---------- */
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                return navigator.clipboard.writeText(text);
+            }
+
+            return new Promise(function (resolve, reject) {
+                var field = document.createElement('textarea');
+                field.value = text;
+                field.setAttribute('readonly', '');
+                field.style.position = 'fixed';
+                field.style.top = '-1000px';
+                document.body.appendChild(field);
+                field.select();
+
+                var copied = false;
+                try {
+                    copied = document.execCommand('copy');
+                } catch (error) {
+                    copied = false;
+                }
+
+                document.body.removeChild(field);
+
+                if (copied) {
+                    resolve();
+                } else {
+                    reject(new Error('Copy failed'));
+                }
+            });
+        }
+
+        function flashButton(button, label, success) {
+            button.textContent = label;
+            button.classList.toggle('is-copied', success);
+            clearTimeout(button._resetTimer);
+            button._resetTimer = setTimeout(function () {
+                button.textContent = 'Copy';
+                button.classList.remove('is-copied');
+            }, 1800);
+        }
+
+        document.querySelectorAll('.copy-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var block = button.closest('.code-block');
+                var code = block.querySelector('code');
+
+                copyToClipboard(code.textContent).then(function () {
+                    flashButton(button, 'Copied', true);
+                }).catch(function () {
+                    flashButton(button, 'Copy failed', false);
+                });
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>
